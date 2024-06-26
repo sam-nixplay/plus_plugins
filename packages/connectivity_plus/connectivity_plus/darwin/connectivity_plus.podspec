@@ -22,8 +22,10 @@ Downloaded by pub (not CocoaPods).
   ]
   s.ios.dependency 'Flutter'
   s.osx.dependency 'FlutterMacOS'
+  s.tvos.dependency 'Flutter'   # Add dependency for tvOS
   s.ios.deployment_target = '12.0'
   s.osx.deployment_target = '10.14'
+  s.tvos.deployment_target = '12.0'  # Set deployment target for tvOS
   s.swift_version = '5.0'
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES' }
   s.ios.resource_bundles = {'connectivity_plus_privacy' => ['PrivacyInfo.xcprivacy']}

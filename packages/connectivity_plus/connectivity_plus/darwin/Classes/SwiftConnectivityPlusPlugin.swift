@@ -1,8 +1,8 @@
 // Copyright 2019 The Chromium Authors. All rights reserved.
-// Use of this source is governed by a BSD-style license that can
+// Use of this source code is governed by a BSD-style license that can
 // be found in the LICENSE file.
 
-#if os(iOS)
+#if os(iOS) || os(tvOS)
 import Flutter
 #elseif os(macOS)
 import Cocoa
@@ -20,7 +20,7 @@ public class SwiftConnectivityPlusPlugin: NSObject, FlutterPlugin, FlutterStream
   }
 
   public static func register(with registrar: FlutterPluginRegistrar) {
-    #if os(iOS)
+    #if os(iOS) || os(tvOS)
     let binaryMessenger = registrar.messenger()
     #elseif os(macOS)
     let binaryMessenger = registrar.messenger
@@ -60,7 +60,11 @@ public class SwiftConnectivityPlusPlugin: NSObject, FlutterPlugin, FlutterStream
     case .wifi:
       return "wifi"
     case .cellular:
+      #if os(tvOS)
+      return "none" // tvOS does not support cellular connectivity
+      #else
       return "mobile"
+      #endif
     case .wiredEthernet:
       return "ethernet"
     case .other:

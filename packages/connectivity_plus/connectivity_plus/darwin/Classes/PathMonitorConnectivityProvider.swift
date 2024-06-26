@@ -11,15 +11,17 @@ public class PathMonitorConnectivityProvider: NSObject, ConnectivityProvider {
 
   private func connectivityFrom(path: NWPath) -> [ConnectivityType] {
     var types: [ConnectivityType] = []
-    
+
     // Check for connectivity and append to types array as necessary
     if path.status == .satisfied {
       if path.usesInterfaceType(.wifi) {
         types.append(.wifi)
       }
+      #if !os(tvOS) // tvOS does not support cellular connectivity
       if path.usesInterfaceType(.cellular) {
         types.append(.cellular)
       }
+      #endif
       if path.usesInterfaceType(.wiredEthernet) {
         types.append(.wiredEthernet)
       }
