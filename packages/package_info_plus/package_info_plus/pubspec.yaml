@@ -13,10 +13,12 @@ flutter:
         pluginClass: PackageInfoPlugin
       ios:
         pluginClass: FPPPackageInfoPlusPlugin
-      linux:
-        dartPluginClass: PackageInfoPlusLinuxPlugin
       macos:
         pluginClass: FPPPackageInfoPlusPlugin
+      tvos:                               # Add this block for tvOS support
+        pluginClass: FPPPackageInfoPlusPlugin
+      linux:
+        dartPluginClass: PackageInfoPlusLinuxPlugin
       web:
         pluginClass: PackageInfoPlusWebPlugin
         fileName: src/package_info_plus_web.dart
